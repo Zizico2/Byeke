@@ -1,4 +1,7 @@
+import dataStructures.*;
+import Byeke.*;
 import java.util.Scanner;
+
 
 public class Main {
 
@@ -10,6 +13,10 @@ public class Main {
 
         Message(String msg) {
             this.msg = msg;
+        }
+
+        public String getMsg(){
+            return msg;
         }
     }
 
@@ -57,7 +64,7 @@ public class Main {
                 cmd = getCommand(in);
                 switch (cmd) {
                     case ADDUSER:
-                        processAdUser(in, byeke);
+                        processAddUser(in, byeke);
                         break;
 
                     case REMOVEUSER:
@@ -122,7 +129,7 @@ public class Main {
 
                 }
             } catch (IllegalArgumentException e) {
-                System.out.println(Message.UNKNOWN.msg);
+                //System.out.println(Message.UNKNOWN.msg);
             }
         } while (cmd == null || !cmd.equals(Command.XS));
     }
@@ -182,15 +189,49 @@ public class Main {
     }
 
     private static void processGetUserInfo(Scanner in, Byeke byeke) {
+        String ID = in.nextLine();
 
+        try {
+            Iterator userInfo  = byeke.getUserInfo(ID);
 
+            String userInfoString = "";
+
+            //TODO
+
+            System.out.println(userInfoString);
+        } catch (InvalidUserIDException e){
+            System.out.println(e.getMessage());
+        }
     }
 
     private static void processRemoveUser(Scanner in, Byeke byeke) {
+        String ID = in.nextLine();
+
+        try {
+            byeke.removeUser(ID);
+            System.out.println(Message.userRemovedSuccessfully.getMsg());
+        } catch (InvalidUserIDException e){
+            System.out.println(e.getMessage());
+        }
 
     }
 
-    private static void processAdUser(Scanner in, Byeke byeke) {
+    private static void processAddUser(Scanner in, Byeke byeke) {
+        String ID = in.next();
+        String tin = in.next();
+        String emailAdress = in.next();
+        String phoneNumber = in.next();
+        String name = in.next();
+        in.nextLine();
+        String adress = in.nextLine();
+
+        try {
+            byeke.addUser(ID,tin,emailAdress,phoneNumber,name,adress);
+            System.out.println(Message.userAddedSuccessfully.getMsg());
+        } catch (DuplicateUserIDException e){
+            System.out.println(e.getMessage());
+        }
+
 
     }
 }
