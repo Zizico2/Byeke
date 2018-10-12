@@ -1,9 +1,16 @@
 package Byeke.Park;
 
 import Byeke.Bike.Bike;
+import Byeke.PickUp.PickUp;
+import Byeke.PickUp.PickUpInfo;
+import dataStructures.DoublyLinkedList;
 import dataStructures.List;
 
 public class ParkClass implements Park {
+    /**
+     * Serial Version UID of the Class
+     */
+    static final long serialVersionUID = 0L;
 
     private String iD;
 
@@ -13,7 +20,7 @@ public class ParkClass implements Park {
 
     private Bike parkedBike;
 
-    private int pickUps;
+    private List<PickUpInfo> pickUps;
 
 
     public static ParkClass createPark(String iD, String name, String address){
@@ -25,7 +32,7 @@ public class ParkClass implements Park {
         this.name = name;
         this.address = address;
         this.parkedBike = null;
-        this.pickUps = 0;
+        this.pickUps = new DoublyLinkedList<>();
     }
 
 
@@ -36,7 +43,7 @@ public class ParkClass implements Park {
 
     @Override
     public void removeBike(Bike bike) {
-
+        parkedBike = null;
     }
 
     @Override
@@ -46,17 +53,17 @@ public class ParkClass implements Park {
 
     @Override
     public int getNoPickUps() {
-        return pickUps;
+        return pickUps.size();
     }
 
     @Override
     public boolean hasPickUps() {
-        return pickUps!=0;
+        return !pickUps.isEmpty();
     }
 
     @Override
     public int getNoParkedBikes() {
-        return hasParkedBikes() ? 1 : 0;
+        return parkedBike != null ? 1 : 0;
     }
 
     @Override
@@ -73,6 +80,18 @@ public class ParkClass implements Park {
     public String getId() {
         return iD;
     }
+
+    public void pickUp(PickUp pickup){
+        parkedBike = null;
+        pickUps.addLast(pickup);
+    }
+
+    public void pickDown(PickUp pickup){
+        parkedBike = pickup.getBike();
+    }
+
+
+
 
 
 }

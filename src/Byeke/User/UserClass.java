@@ -7,6 +7,10 @@ import dataStructures.Iterator;
 import dataStructures.List;
 
 public class UserClass implements User {
+    /**
+     * Serial Version UID of the Class
+     */
+    static final long serialVersionUID = 0L;
 
     private static final int INITIAL_BALANCE = 5;
 
@@ -22,16 +26,16 @@ public class UserClass implements User {
     List<PickUpInfo> archivedPickUps;
     PickUp activePickUp;
 
-    public static UserClass createUser(String iD, String name, String adress, String emailAdress, String phoneNumber, String tin){
-        return new UserClass(iD, name, adress, emailAdress, phoneNumber, tin);
+    public static UserClass createUser(String iD, String tin, String emailAddress, String phoneNumber, String name, String address) {
+        return new UserClass(iD, name, address, emailAddress, phoneNumber, tin);
     }
 
 
-    private UserClass(String iD, String name, String adress, String emailAdress, String phoneNumber, String tin) {
+    private UserClass(String iD, String name, String address, String emailAddress, String phoneNumber, String tin) {
         this.iD = iD;
         this.name = name;
-        this.address = adress;
-        this.emailAdress = emailAdress;
+        this.address = address;
+        this.emailAdress = emailAddress;
         this.phoneNumber = phoneNumber;
         this.tin = tin;
         this.balance = INITIAL_BALANCE;
@@ -45,13 +49,14 @@ public class UserClass implements User {
         return iD;
     }
 
-    public void pickUp(PickUp pickUp){
+    public void pickUp(PickUp pickUp) {
         activePickUp = pickUp;
     }
 
     @Override
     public void pickDown() {
-        //balance -= activePickUp.get
+        archivedPickUps.addLast(activePickUp);
+        activePickUp = null;
     }
 
     public String getName() {
@@ -89,11 +94,11 @@ public class UserClass implements User {
 
     @Override
     public boolean hasPickUps() {
-        return !archivedPickUps.isEmpty() || activePickUp!=null;
+        return !archivedPickUps.isEmpty() || activePickUp != null;
     }
 
-    public boolean isOnFirstPickup(){
-        return archivedPickUps.isEmpty() && activePickUp!=null;
+    public boolean isOnFirstPickup() {
+        return archivedPickUps.isEmpty() && activePickUp != null;
     }
 
     @Override
@@ -108,9 +113,5 @@ public class UserClass implements User {
 
     public void addBalance(int balance) {
         this.balance += balance;
-    }
-
-    public void addPoints(int points) {
-        this.points += points;
     }
 }

@@ -1,6 +1,6 @@
 package Byeke.Park;
 
-public interface ParkInfo {
+public interface ParkInfo extends java.io.Serializable {
 
     String getName();
 

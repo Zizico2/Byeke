@@ -3,7 +3,7 @@ package Byeke.Bike;
 import Byeke.PickUp.PickUpInfo;
 import dataStructures.Iterator;
 
-public interface BikeInfo{
+public interface BikeInfo extends java.io.Serializable{
 
     String getId();
 
@@ -14,4 +14,6 @@ public interface BikeInfo{
     boolean isMoving();
 
     boolean hasPickUps();
+
+    boolean isOnFirstPickUp();
 }

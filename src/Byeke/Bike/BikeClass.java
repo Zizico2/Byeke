@@ -3,6 +3,10 @@ import dataStructures.*;
 import Byeke.PickUp.*;
 
 public class BikeClass implements Bike {
+    /**
+     * Serial Version UID of the Class
+     */
+    static final long serialVersionUID = 0L;
 
     String iD;
     String plate;
@@ -48,5 +52,10 @@ public class BikeClass implements Bike {
     @Override
     public boolean hasPickUps() {
         return !archivedPickUps.isEmpty() || activePickUp != null;
+    }
+
+    @Override
+    public boolean isOnFirstPickUp() {
+        return activePickUp != null && archivedPickUps.isEmpty();
     }
 }

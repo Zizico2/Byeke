@@ -3,7 +3,7 @@ package Byeke.User;
 import Byeke.PickUp.PickUpInfo;
 import dataStructures.Iterator;
 
-public interface UserInfo {
+public interface UserInfo extends java.io.Serializable {
 
      String getId();
 

@@ -1,17 +1,22 @@
 import Byeke.*;
 import Byeke.Park.ParkInfo;
+import Byeke.PickUp.PickUpInfo;
 import Byeke.User.UserInfo;
 import Enums.*;
 import Exceptions.*;
+import dataStructures.Iterator;
 
-import java.sql.SQLOutput;
-import java.util.Formatter;
+import java.io.*;
 import java.util.Scanner;
 
+
+
+
 public class Main {
+    private static final String FILE = "save_file.data";
 
     public static void main(String[] args) {
-        Byeke byeke = new ByekeClass();
+        Byeke byeke = loadProgram();
         Scanner in = new Scanner(System.in);
         executeCommand(in, byeke);
     }
@@ -69,7 +74,7 @@ public class Main {
                         break;
 
                     case BIKEPICKUPS:
-                        processBikePickUps(byeke);
+                        processBikePickUps(in, byeke);
                         break;
 
                     case USERPICKUPS:
@@ -87,23 +92,46 @@ public class Main {
                     case FAVORITEPARKS:
                         processFavoriteParks(byeke);
 
-                    case XS:
-                        processXS(byeke);
-                        System.out.println(Message.EXITING.getMessage());
-                        in.close();
                 }
-            System.out.println();
+            if (!cmd.equals(Command.XS))
+                    System.out.println();
+
         } while (!cmd.equals(Command.XS));
+        exitProgram(in,byeke);
     }
 
-    private static void processXS(Byeke byeke) {
+    private static Byeke loadProgram(){
+        try{
+            ObjectInputStream file = new ObjectInputStream(new FileInputStream(FILE));
+            Byeke byeke = (Byeke)file.readObject();
+            file.close();
+            return byeke;
+        }catch (IOException|ClassNotFoundException e){
 
+        }
+        return new ByekeClass();
+    }
+
+    private static void exitProgram(Scanner in, Byeke byeke) {
+        in.nextLine();
+        in.nextLine();
+        System.out.println(Message.EXITING.getMessage());
+        in.close();
+
+        try{
+            ObjectOutputStream file = new ObjectOutputStream(new FileOutputStream(FILE));
+            file.writeObject(byeke);
+            file.flush();
+            file.close();
+        } catch (IOException e){
+
+        }
     }
 
     private static void processFavoriteParks(Byeke byeke) {
         try {
-
-
+            ParkInfo parkInfo = byeke.favouriteParks();
+            System.out.printf(Message.FAVOURITE_PARKS_SUCCESS.getMessage(), parkInfo.getName(), parkInfo.getAddress(), parkInfo.getNoPickUps());
         } catch (NoPickUpsException e){
             System.out.println(e.getMessage());
 
@@ -112,8 +140,8 @@ public class Main {
 
     private static void processListDelayed(Byeke byeke) {
         try {
-
-
+            UserInfo userinfo = byeke.listDelayed();
+            System.out.printf(Message.LIST_DELAYED_SUCCESS.getMessage(), userinfo.getName(), userinfo.getTin(), userinfo.getAddress(), userinfo.getEmailAddress(), userinfo.getPhoneNumber(), userinfo.getBalance(), userinfo.getPoints());
         } catch (NoDelaysException e){
             System.out.println(e.getMessage());
 
@@ -121,8 +149,14 @@ public class Main {
     }
 
     private static void processParkedBike(Scanner in, Byeke byeke) {
-        try {
+        String bikeId = in.next();
+        String parkId = in.next();
+        in.nextLine();
+        in.nextLine();
 
+        try {
+            byeke.parkedBike(bikeId,parkId);
+            System.out.println(Message.PARKED_BIKE_SUCCESS.getMessage());
 
         } catch (InexistantBikeIdException | InexistantParkIdException | BikeNotParkedException e){
             System.out.println(e.getMessage());
@@ -131,8 +165,18 @@ public class Main {
     }
 
     private static void processUserPickUps(Scanner in, Byeke byeke) {
-        try {
+        String userId = in.next();
+        in.nextLine();
+        in.nextLine();
 
+        try {
+            Iterator<PickUpInfo> userPickUps = byeke.userPickUps(userId);
+            PickUpInfo pickUpInfo = null;
+            userPickUps.rewind();
+            while(userPickUps.hasNext()) {
+                pickUpInfo = userPickUps.next();
+                System.out.printf(Message.USER_PICKUPS_SUCCESS.getMessage(), pickUpInfo.getBikeInfo().getId(), pickUpInfo.getInitialParkInfo().getId(), pickUpInfo.getFinalParkInfo().getId(), pickUpInfo.getTime(), pickUpInfo.getDelay(), pickUpInfo.getCost());
+            }
 
         } catch (InexistantUserIdException | UserHasNoPickUpsException | UserOnTheMoveException e){
             System.out.println(e.getMessage());
@@ -141,11 +185,21 @@ public class Main {
 
     }
 
-    private static void processBikePickUps(Byeke byeke) {
+    private static void processBikePickUps(Scanner in, Byeke byeke) {
+        String bikeId = in.next();
+        in.nextLine();
+        in.nextLine();
+
         try {
+            Iterator<PickUpInfo> bikePickUps = byeke.bikePickUps(bikeId);
+            PickUpInfo pickUpInfo = null;
+            bikePickUps.rewind();
+            while(bikePickUps.hasNext()) {
+                pickUpInfo = bikePickUps.next();
+                System.out.printf(Message.BIKE_PICKUPS_SUCCESS.getMessage(), pickUpInfo.getUserInfo().getId(), pickUpInfo.getInitialParkInfo().getId(), pickUpInfo.getFinalParkInfo().getId(), pickUpInfo.getTime(), pickUpInfo.getDelay(), pickUpInfo.getCost());
+            }
 
-
-        } catch (InexistantBikeIdException | BikeHasNoPickUpsException | BikeOnTheMoveException e){
+        } catch (InexistantBikeIdException | BikeHasNoPickUpsException | BikeOnFirstPickUpException e){
             System.out.println(e.getMessage());
 
         }
@@ -153,8 +207,14 @@ public class Main {
     }
 
     private static void processChargeUser(Scanner in, Byeke byeke) {
-        try {
+        String userId = in.next();
+        int value = in.nextInt();
+        in.nextLine();
+        in.nextLine();
 
+        try {
+            UserInfo userInfo = byeke.ChargeUser(userId,value);
+            System.out.printf(Message.CHARGE_USER_SUCCESS.getMessage(), userInfo.getBalance());
 
         } catch (InexistantUserIdException | InvalidValueException e){
             System.out.println(e.getMessage());
@@ -163,8 +223,16 @@ public class Main {
     }
 
     private static void processPickDown(Scanner in, Byeke byeke) {
-        try {
+        String bikeId = in.next();
+        String parkId = in.next();
+        int time = in.nextInt();
+        in.nextLine();
+        in.nextLine();
 
+
+        try {
+            UserInfo userInfo = byeke.pickDown(bikeId, parkId, time);
+            System.out.printf(Message.BIKE_PICKED_DOWN_SUCCESSFULLY.getMessage(), userInfo.getBalance(), userInfo.getPoints());
 
         } catch (InexistantBikeIdException | InexistantParkIdException | BikeNotOnTheMoveException | InvalidTimeException e){
             System.out.println(e.getMessage());
@@ -234,8 +302,7 @@ public class Main {
 
     private static void processAddPark(Scanner in, Byeke byeke) {
         String iD = in.next();
-        String name = in.next();
-        in.nextLine();
+        String name = in.nextLine().trim();
         String address = in.nextLine();
         in.nextLine();
 
@@ -280,8 +347,7 @@ public class Main {
         String tin = in.next();
         String emailAdress = in.next();
         String phoneNumber = in.next();
-        String name = in.next();
-        in.nextLine();
+        String name = in.nextLine().trim();
         String address = in.nextLine();
         in.nextLine();
 

@@ -6,9 +6,7 @@ import Byeke.PickUp.PickUpInfo;
 import Byeke.User.UserInfo;
 import dataStructures.Iterator;
 
-import java.io.Serializable;
-
-public interface Byeke extends Serializable {
+public interface Byeke extends java.io.Serializable {
 
 
 
@@ -28,7 +26,7 @@ public interface Byeke extends Serializable {
 
     void pickUp(String bikeId, String userId) throws InexistantBikeIdException, InexistantUserIdException, BikeOnTheMoveException, UserOnTheMoveException, LowBalanceException;
 
-    UserInfo PickDown(String bikeId, String parkId, int time) throws InexistantBikeIdException, InexistantParkIdException, BikeNotOnTheMoveException, InvalidTimeException;
+    UserInfo pickDown(String bikeId, String parkId, int time) throws InexistantBikeIdException, InexistantParkIdException, BikeNotOnTheMoveException, InvalidTimeException;
 
     UserInfo ChargeUser(String userId, int value) throws InexistantUserIdException, InvalidValueException;
 
@@ -36,10 +34,10 @@ public interface Byeke extends Serializable {
 
     Iterator<PickUpInfo> userPickUps(String userId) throws InexistantUserIdException, UserHasNoPickUpsException, UserOnFirstPickUpException;
 
-    void ParkedBike (String bikeId, String parkId) throws InexistantBikeIdException, InexistantParkIdException, BikeNotParkedException;
+    void parkedBike(String bikeId, String parkId) throws InexistantBikeIdException, InexistantParkIdException, BikeNotParkedException;
 
-    UserInfo ListDelayed() throws NoDelaysException;
+    UserInfo listDelayed() throws NoDelaysException;
 
-    ParkInfo FavouriteParks() throws NoPickUpsException;
+    ParkInfo favouriteParks() throws NoPickUpsException;
 
 }
