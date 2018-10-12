@@ -1,33 +1,68 @@
 package Byeke.User;
 
-public class UserClass
-{
+import Byeke.PickUp.PickUp;
+import Byeke.PickUp.PickUpInfo;
+import dataStructures.DoublyLinkedList;
+import dataStructures.Iterator;
+import dataStructures.List;
 
+public class UserClass implements User {
+
+    private static final int INITIAL_BALANCE = 5;
+
+    private String iD;
     private String name;
-    private String adress;
+    private String address;
     private String emailAdress;
     private String phoneNumber;
     private String tin;
     private int balance;
     private int points;
 
-    public UserClass(String name, String adress, String emailAdress, String phoneNumber, String tin) {
+    List<PickUpInfo> archivedPickUps;
+    PickUp activePickUp;
+
+    public static UserClass createUser(String iD, String name, String adress, String emailAdress, String phoneNumber, String tin){
+        return new UserClass(iD, name, adress, emailAdress, phoneNumber, tin);
+    }
+
+
+    private UserClass(String iD, String name, String adress, String emailAdress, String phoneNumber, String tin) {
+        this.iD = iD;
         this.name = name;
-        this.adress = adress;
+        this.address = adress;
         this.emailAdress = emailAdress;
         this.phoneNumber = phoneNumber;
         this.tin = tin;
+        this.balance = INITIAL_BALANCE;
+        this.points = 0;
+        this.activePickUp = null;
+        this.archivedPickUps = new DoublyLinkedList<>();
+    }
+
+    @Override
+    public String getId() {
+        return iD;
+    }
+
+    public void pickUp(PickUp pickUp){
+        activePickUp = pickUp;
+    }
+
+    @Override
+    public void pickDown() {
+        //balance -= activePickUp.get
     }
 
     public String getName() {
         return name;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public String getEmailAdress() {
+    public String getEmailAddress() {
         return emailAdress;
     }
 
@@ -47,11 +82,35 @@ public class UserClass
         return points;
     }
 
-    public void setBalance(int balance) {
-        this.balance = balance;
+    @Override
+    public boolean hasDelays() {
+        return points != 0;
     }
 
-    public void setPoints(int points) {
-        this.points = points;
+    @Override
+    public boolean hasPickUps() {
+        return !archivedPickUps.isEmpty() || activePickUp!=null;
+    }
+
+    public boolean isOnFirstPickup(){
+        return archivedPickUps.isEmpty() && activePickUp!=null;
+    }
+
+    @Override
+    public Iterator<PickUpInfo> getArchivedPickUps() {
+        return archivedPickUps.iterator();
+    }
+
+    @Override
+    public boolean isMoving() {
+        return activePickUp != null;
+    }
+
+    public void addBalance(int balance) {
+        this.balance += balance;
+    }
+
+    public void addPoints(int points) {
+        this.points += points;
     }
 }
