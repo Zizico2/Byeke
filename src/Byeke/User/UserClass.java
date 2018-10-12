@@ -23,8 +23,8 @@ public class UserClass implements User {
     private int balance;
     private int points;
 
-    List<PickUpInfo> archivedPickUps;
-    PickUp activePickUp;
+    private List<PickUpInfo> archivedPickUps;
+    private PickUp activePickUp;
 
     public static UserClass createUser(String iD, String tin, String emailAddress, String phoneNumber, String name, String address) {
         return new UserClass(iD, name, address, emailAddress, phoneNumber, tin);

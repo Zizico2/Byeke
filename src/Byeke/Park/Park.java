@@ -7,7 +7,7 @@ public interface Park extends ParkInfo {
 
     void addBike(Bike bike);
 
-    void removeBike(Bike bike);
+    void removeBike();
 
     void pickUp(PickUp pickup);
 

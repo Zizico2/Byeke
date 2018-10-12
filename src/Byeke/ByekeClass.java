@@ -92,7 +92,7 @@ public class ByekeClass implements Byeke {
             throw new BikeHasPickUpsException();
         else
             bike = null;
-            park.removeBike(bike);
+            park.removeBike();
 
     }
 

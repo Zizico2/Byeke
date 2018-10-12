@@ -8,10 +8,10 @@ public class BikeClass implements Bike {
      */
     static final long serialVersionUID = 0L;
 
-    String iD;
-    String plate;
-    List<PickUpInfo> archivedPickUps;
-    PickUp activePickUp;
+    private String iD;
+    private String plate;
+    private List<PickUpInfo> archivedPickUps;
+    private PickUp activePickUp;
 
     public static BikeClass createBike(String iD, String plate){
         return new BikeClass(iD, plate);

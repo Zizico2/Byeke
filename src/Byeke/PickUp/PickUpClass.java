@@ -21,9 +21,9 @@ public class PickUpClass implements PickUp{
     private Bike bike;
     private User user;
 
-    private int time;
-   // private int delay;
     private int cost;
+    private int time;
+    private int delay;
 
     public static PickUpClass createPickUp(Park initialPark,Bike bike, User user){
         return new PickUpClass(initialPark, bike, user);
@@ -35,37 +35,38 @@ public class PickUpClass implements PickUp{
         this.initialPark = initialPark;
         this.bike = bike;
         this.user = user;
+        this.cost = 0;
+        this.time = 0;
+        this.delay = 0;
     }
 
-    public int pickDown(Park finalPark, int time){
+    @Override
+    public void pickDown(Park finalPark, int time){
         this.finalPark = finalPark;
-        //if (time > MAX_TIME) {
-        //    delay = time - MAX_TIME;
-          //  cost = (int)Math.ceil(delay/(double)PAYMENT_PERIOD);
-        //} else{
-          //  delay = 0;
-            //cost = 0;
-        //}
         this.time = time;
-        return cost;
     }
 
+    @Override
     public ParkInfo getInitialParkInfo() {
         return initialPark;
     }
 
+    @Override
     public ParkInfo getFinalParkInfo() {
         return finalPark;
     }
 
-   public int getTime() {
+    @Override
+    public int getTime() {
         return time;
     }
 
+    @Override
     public int getDelay() {
-        return 0;
+        return delay;
     }
 
+    @Override
     public int getCost() {
         return cost;
     }

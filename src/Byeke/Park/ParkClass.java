@@ -42,7 +42,7 @@ public class ParkClass implements Park {
     }
 
     @Override
-    public void removeBike(Bike bike) {
+    public void removeBike() {
         parkedBike = null;
     }
 

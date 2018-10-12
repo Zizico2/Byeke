@@ -326,11 +326,15 @@ public class DoublyLinkedList<E> implements List<E>
      * @param list - list to be appended to the end of this
      */
     public void append( DoublyLinkedList<E> list )
-    {
-        //TODO: Left as an exercise.
+    { if(!list.isEmpty()){
+        tail.setNext(list.head);
+        tail = list.tail;
+        currentSize += list.currentSize;
+        list.head = null;
+        list.tail = null;
+        list.currentSize = 0;
+        }
     }
-
-
-}   
+}
 
 

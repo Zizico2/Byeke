@@ -29,7 +29,7 @@ public class Main {
     }
 
     private static void executeCommand(Scanner in, Byeke byeke) {
-        Command cmd = null;
+        Command cmd;
         do {
                 cmd = getCommand(in);
                 switch (cmd) {
@@ -171,7 +171,7 @@ public class Main {
 
         try {
             Iterator<PickUpInfo> userPickUps = byeke.userPickUps(userId);
-            PickUpInfo pickUpInfo = null;
+            PickUpInfo pickUpInfo;
             userPickUps.rewind();
             while(userPickUps.hasNext()) {
                 pickUpInfo = userPickUps.next();
@@ -192,7 +192,7 @@ public class Main {
 
         try {
             Iterator<PickUpInfo> bikePickUps = byeke.bikePickUps(bikeId);
-            PickUpInfo pickUpInfo = null;
+            PickUpInfo pickUpInfo;
             bikePickUps.rewind();
             while(bikePickUps.hasNext()) {
                 pickUpInfo = bikePickUps.next();
