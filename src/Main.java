@@ -113,8 +113,6 @@ public class Main {
     }
 
     private static void exitProgram(Scanner in, Byeke byeke) {
-        in.nextLine();
-        in.nextLine();
         System.out.println(Message.EXITING.getMessage());
         System.out.println();
         in.close();

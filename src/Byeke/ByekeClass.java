@@ -10,7 +10,7 @@ import Byeke.PickUp.PickUpInfo;
 import Byeke.User.User;
 import Byeke.User.UserInfo;
 import Exceptions.*;
-import dataStructures.Iterator;
+import dataStructures.*;
 
 import static Byeke.Bike.BikeClass.createBike;
 import static Byeke.Park.ParkClass.createPark;
@@ -24,41 +24,41 @@ public class ByekeClass implements Byeke {
 
     private static final int MINIMUM_BALANCE = 5;
 
-    private User user;
+    private Dictionary<String, User> users;
 
-    private Bike bike;
+    private Dictionary<String, Bike> bikes;
 
     private Park park;
 
-    private PickUp activePickUp;
+    private List<PickUp> activePickUps;
 
+    public ByekeClass() {
+        this.users = new ChainedHashTable<>();
+        this.bikes = new ChainedHashTable<>();
+        this.park = null;
+        this.activePickUps = new DoublyLinkedList<>();
+    }
 
     @Override
     public void addUser(String userId, String tin, String emailAddress, String phoneNumber, String name, String address) throws DuplicateUserIdException {
-        if (user == null ||!user.getId().equalsIgnoreCase(userId)){
-            user = createUser(userId,tin,emailAddress,phoneNumber,name,address);
-        } else
+        if (users.find(userId) != null)
             throw new DuplicateUserIdException();
+        users.insert(userId, createUser(userId,tin,emailAddress,phoneNumber,name,address));
     }
 
     @Override
     public void removeUser(String userId) throws InexistantUserIdException, UserHasPickUpsException {
-        if (user == null || !user.getId().equalsIgnoreCase(userId))
+        if (users.find(userId) == null)
             throw new InexistantUserIdException();
-        else if (user.hasPickUps())
+        if (users.find(userId).hasPickUps())
             throw new UserHasPickUpsException();
-        else
-            user = null;
+        users.remove(userId);
 
     }
 
     @Override
     public UserInfo getUserInfo(String userId) throws InexistantUserIdException {
         if (user == null || !user.getId().equalsIgnoreCase(userId)) {
-            if(user != null){
-                System.out.println(user.getId());
-                System.out.println(userId);
-            }
             throw new InexistantUserIdException();
         }
         return user;
@@ -74,13 +74,12 @@ public class ByekeClass implements Byeke {
 
     @Override
     public void addBike(String bikeId, String parkId, String plate) throws DuplicateBikeIdException, InexistantParkIdException {
-        if (bike != null && bike.getId().equalsIgnoreCase(bikeId))
+        if (bikes.find(bikeId) != null)
             throw new DuplicateBikeIdException();
-        else if (!park.getId().equalsIgnoreCase(parkId))
+        if (!park.getId().equalsIgnoreCase(parkId))
             throw new InexistantParkIdException();
-        else {
-            bike = createBike(bikeId, plate);
-            park.addBike(bike);
+        bikes.insert(bikeId, createBike(bikeId, plate));
+        park.addBike(createBike(bikeId, plate));
         }
     }
 
