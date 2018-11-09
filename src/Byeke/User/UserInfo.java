@@ -5,29 +5,29 @@ import dataStructures.Iterator;
 
 public interface UserInfo extends java.io.Serializable {
 
-     String getId();
+    String getId();
 
-     String getName();
+    String getName();
 
-     String getAddress();
+    String getAddress();
 
-     String getEmailAddress();
+    String getEmailAddress();
 
-     String getPhoneNumber();
+    String getPhoneNumber();
 
-     String getTin();
+    String getTin();
 
-     int getBalance();
+    int getBalance();
 
-     int getPoints();
+    int getPoints();
 
-     boolean hasDelays();
+    boolean hasDelays();
 
-     boolean hasPickUps();
+    boolean hasPickUps();
 
-     boolean isOnFirstPickup();
+    boolean isOnFirstPickup();
 
-     Iterator<PickUpInfo> getArchivedPickUps();
+    Iterator<PickUpInfo> getArchivedPickUps();
 
-     boolean isMoving();
+    boolean isMoving();
 }

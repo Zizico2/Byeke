@@ -1,7 +1,7 @@
 package Exceptions;
 
 public class InexistantUserIdException extends RuntimeException {
-    public InexistantUserIdException(){
+    public InexistantUserIdException() {
         super("Utilizador inexistente.");
     }
 }

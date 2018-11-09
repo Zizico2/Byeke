@@ -1,7 +1,7 @@
 package Exceptions;
 
 public class BikeNotOnTheMoveException extends RuntimeException {
-    public BikeNotOnTheMoveException(){
+    public BikeNotOnTheMoveException() {
         super("Bicicleta parada.");
     }
 }

@@ -6,6 +6,9 @@ import Byeke.PickUp.PickUpInfo;
 import dataStructures.DoublyLinkedList;
 import dataStructures.List;
 
+/**
+ * @author Bernardo Antonio Borda d'Agua - 53648
+ */
 public class ParkClass implements Park {
     /**
      * Serial Version UID of the Class
@@ -23,11 +26,11 @@ public class ParkClass implements Park {
     private List<PickUpInfo> pickUps;
 
 
-    public static ParkClass createPark(String iD, String name, String address){
-        return new ParkClass(iD,name,address);
+    public static ParkClass createPark(String iD, String name, String address) {
+        return new ParkClass(iD, name, address);
     }
 
-    private ParkClass (String iD, String name, String address){
+    private ParkClass(String iD, String name, String address) {
         this.iD = iD;
         this.name = name;
         this.address = address;
@@ -38,7 +41,7 @@ public class ParkClass implements Park {
 
     @Override
     public void addBike(Bike bike) {
-        parkedBike =  bike;
+        parkedBike = bike;
     }
 
     @Override
@@ -81,17 +84,14 @@ public class ParkClass implements Park {
         return iD;
     }
 
-    public void pickUp(PickUp pickup){
+    public void pickUp(PickUp pickup) {
         parkedBike = null;
         pickUps.addLast(pickup);
     }
 
-    public void pickDown(PickUp pickup){
+    public void pickDown(PickUp pickup) {
         parkedBike = pickup.getBike();
     }
-
-
-
 
 
 }

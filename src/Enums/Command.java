@@ -1,7 +1,7 @@
 package Enums;
 
 /**
- * Commands (user input)
+ * @author Bernardo Antonio Borda d'Agua - 53648
  */
 public enum Command {
     ADDUSER(),

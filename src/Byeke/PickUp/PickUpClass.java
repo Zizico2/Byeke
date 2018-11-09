@@ -7,7 +7,10 @@ import Byeke.Park.ParkInfo;
 import Byeke.User.User;
 import Byeke.User.UserInfo;
 
-public class PickUpClass implements PickUp{
+/**
+ * @author Bernardo Antonio Borda d'Agua - 53648
+ */
+public class PickUpClass implements PickUp {
     /**
      * Serial Version UID of the Class
      */
@@ -25,10 +28,9 @@ public class PickUpClass implements PickUp{
     private int time;
     private int delay;
 
-    public static PickUpClass createPickUp(Park initialPark,Bike bike, User user){
+    public static PickUpClass createPickUp(Park initialPark, Bike bike, User user) {
         return new PickUpClass(initialPark, bike, user);
     }
-
 
 
     private PickUpClass(Park initialPark, Bike bike, User user) {
@@ -41,7 +43,7 @@ public class PickUpClass implements PickUp{
     }
 
     @Override
-    public void pickDown(Park finalPark, int time){
+    public void pickDown(Park finalPark, int time) {
         this.finalPark = finalPark;
         this.time = time;
     }
@@ -84,6 +86,11 @@ public class PickUpClass implements PickUp{
     @Override
     public Bike getBike() {
         return bike;
+    }
+
+    @Override
+    public User getUser() {
+        return user;
     }
 
 

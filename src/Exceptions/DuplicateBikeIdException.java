@@ -1,7 +1,7 @@
 package Exceptions;
 
 public class DuplicateBikeIdException extends RuntimeException {
-    public DuplicateBikeIdException(){
+    public DuplicateBikeIdException() {
         super("Bicicleta existente.");
     }
 }

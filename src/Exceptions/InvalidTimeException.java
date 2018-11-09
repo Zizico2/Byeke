@@ -1,7 +1,7 @@
 package Exceptions;
 
 public class InvalidTimeException extends RuntimeException {
-    public InvalidTimeException(){
+    public InvalidTimeException() {
         super("Dados invalidos.");
     }
 }

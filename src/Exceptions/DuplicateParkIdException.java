@@ -1,7 +1,7 @@
 package Exceptions;
 
 public class DuplicateParkIdException extends RuntimeException {
-    public DuplicateParkIdException(){
+    public DuplicateParkIdException() {
         super("Parque existente.");
     }
 }

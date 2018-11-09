@@ -2,6 +2,7 @@ package Enums;
 
 
 /**
+ * @author Bernardo Antonio Borda d'Agua - 53648
  * Messages output by successefull commands.
  */
 public enum Message {
@@ -24,14 +25,13 @@ public enum Message {
     EXITING("Gravando e terminando...");
 
 
-
-
-
     private final String message;
+
     Message(String message) {
         this.message = message;
     }
-    public String getMessage(){
+
+    public String getMessage() {
         return message;
     }
 

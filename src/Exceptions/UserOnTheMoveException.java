@@ -1,7 +1,7 @@
 package Exceptions;
 
 public class UserOnTheMoveException extends RuntimeException {
-    public UserOnTheMoveException(){
+    public UserOnTheMoveException() {
         super("Utilizador em movimento.");
     }
 }

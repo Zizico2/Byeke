@@ -1,13 +1,15 @@
 package Byeke;
 
-import Exceptions.*;
 import Byeke.Park.ParkInfo;
 import Byeke.PickUp.PickUpInfo;
 import Byeke.User.UserInfo;
+import Exceptions.*;
 import dataStructures.Iterator;
 
+/**
+ * @author Bernardo Antonio Borda d'Agua - 53648
+ */
 public interface Byeke extends java.io.Serializable {
-
 
 
     void addUser(String userId, String tin, String emailAddress, String phoneNumber, String name, String address) throws DuplicateUserIdException;

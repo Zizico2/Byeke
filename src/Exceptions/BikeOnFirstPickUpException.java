@@ -1,7 +1,7 @@
 package Exceptions;
 
 public class BikeOnFirstPickUpException extends RuntimeException {
-    public BikeOnFirstPickUpException(){
+    public BikeOnFirstPickUpException() {
         super("Bicicleta em movimento em primeiro pickup.");
     }
 }

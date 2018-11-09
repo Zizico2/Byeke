@@ -1,11 +1,13 @@
 package Byeke.PickUp;
 
-import Byeke.Bike.Bike;
 import Byeke.Bike.BikeInfo;
 import Byeke.Park.ParkInfo;
 import Byeke.User.UserInfo;
 
-public interface PickUpInfo extends java.io.Serializable{
+/**
+ * @author Bernardo Antonio Borda d'Agua - 53648
+ */
+public interface PickUpInfo extends java.io.Serializable {
 
     ParkInfo getInitialParkInfo();
 
@@ -20,6 +22,4 @@ public interface PickUpInfo extends java.io.Serializable{
     UserInfo getUserInfo();
 
     BikeInfo getBikeInfo();
-
-    Bike getBike();
 }

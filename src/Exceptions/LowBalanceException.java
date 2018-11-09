@@ -1,7 +1,7 @@
 package Exceptions;
 
 public class LowBalanceException extends RuntimeException {
-    public LowBalanceException(){
+    public LowBalanceException() {
         super("Saldo insuficiente.");
     }
 }
