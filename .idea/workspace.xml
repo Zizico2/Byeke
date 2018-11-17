@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="b82b18c4-c0d8-4533-ae41-a201749d2047" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Byeke/Tags/Nameable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Byeke/Tags/Nameable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Byeke/User/UserInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Byeke/User/UserInfo.java" afterDir="false" />
+=======
+    <list default="true" id="b82b18c4-c0d8-4533-ae41-a201749d2047" name="Default Changelist" comment="mil cenas">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Byeke/ByekeClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Byeke/ByekeClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+>>>>>>> master
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -85,36 +92,58 @@
       <usages-collector id="statistics.lifecycle.project">
         <counts>
           <entry key="project.closed" value="1" />
+<<<<<<< HEAD
           <entry key="project.open.time.20" value="1" />
           <entry key="project.open.time.21" value="1" />
           <entry key="project.opened" value="2" />
+=======
+          <entry key="project.open.time.21" value="1" />
+          <entry key="project.opened" value="1" />
+>>>>>>> master
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
+<<<<<<< HEAD
           <entry key="java" value="20" />
+=======
+          <entry key="java" value="1" />
+>>>>>>> master
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
+<<<<<<< HEAD
           <entry key="JAVA" value="20" />
+=======
+          <entry key="JAVA" value="1" />
+>>>>>>> master
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
+<<<<<<< HEAD
           <entry key="java" value="1352" />
           <entry key="txt" value="59" />
+=======
+          <entry key="java" value="2" />
+>>>>>>> master
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
+<<<<<<< HEAD
           <entry key="JAVA" value="1352" />
           <entry key="PLAIN_TEXT" value="59" />
+=======
+          <entry key="JAVA" value="2" />
+>>>>>>> master
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
+<<<<<<< HEAD
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
@@ -193,6 +222,14 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="142">
               <caret line="47" column="21" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
+=======
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="290">
+              <caret line="67" column="26" lean-forward="true" selection-start-line="67" selection-start-column="26" selection-end-line="67" selection-end-column="26" />
+>>>>>>> master
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -200,6 +237,7 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Byeke/Park/ParkClass.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -231,6 +269,8 @@
           </provider>
         </entry>
       </file>
+=======
+>>>>>>> master
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -330,6 +370,7 @@
         <option value="$PROJECT_DIR$/src/Enums/Command.java" />
         <option value="$PROJECT_DIR$/src/Enums/Message.java" />
         <option value="$PROJECT_DIR$/src/dataStructures/OrderedDoubleList.java" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/src/Byeke/Park/Comparators/ComparatorByName.java" />
         <option value="$PROJECT_DIR$/src/Byeke/Park/ParkInfo.java" />
         <option value="$PROJECT_DIR$/src/Byeke/ByekeClass.java" />
@@ -338,6 +379,9 @@
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/Byeke/Tags/Nameable.java" />
         <option value="$PROJECT_DIR$/src/Byeke/User/UserInfo.java" />
+=======
+        <option value="$PROJECT_DIR$/src/Main.java" />
+>>>>>>> master
       </list>
     </option>
   </component>
@@ -434,7 +478,11 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+<<<<<<< HEAD
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542477954807" />
+=======
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541781245158" />
+>>>>>>> master
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
@@ -503,7 +551,10 @@
       <workItem from="1541765175606" duration="13708000" />
       <workItem from="1541820838857" duration="27000" />
       <workItem from="1542425733261" duration="64000" />
+<<<<<<< HEAD
       <workItem from="1542469050901" duration="7315000" />
+=======
+>>>>>>> master
     </task>
     <task id="LOCAL-00001" summary="mil cenas">
       <created>1539351687108</created>
@@ -530,7 +581,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="114971000" />
+=======
+    <option name="totallyTimeSpent" value="107656000" />
+>>>>>>> master
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -545,7 +600,11 @@
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
     <editor active="true" />
     <layout>
+<<<<<<< HEAD
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16759777" />
+=======
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16488793" />
+>>>>>>> master
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -773,6 +832,16 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+=======
+    <entry file="file://$PROJECT_DIR$/src/Byeke/User/UserClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="46" column="13" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+>>>>>>> master
     <entry file="file://$PROJECT_DIR$/src/dataStructures/Dictionary.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="466">
@@ -780,8 +849,25 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="jrt:///usr/lib/jvm/java-1.11.0-openjdk-amd64!/java.base/java/util/HashMap.class" />
     <entry file="jrt:///usr/lib/jvm/java-1.11.0-openjdk-amd64!/java.base/java/util/Hashtable.class" />
+=======
+    <entry file="jrt:///usr/lib/jvm/java-1.11.0-openjdk-amd64!/java.base/java/util/HashMap.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="186" column="13" selection-start-line="186" selection-start-column="13" selection-end-line="186" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jrt:///usr/lib/jvm/java-1.11.0-openjdk-amd64!/java.base/java/util/Hashtable.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="430">
+          <caret line="187" column="39" lean-forward="true" selection-start-line="187" selection-start-column="39" selection-end-line="187" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+>>>>>>> master
     <entry file="file://$PROJECT_DIR$/src/dataStructures/Entry.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -833,6 +919,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/dataStructures/OrderedDoubleList.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="45">
           <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
         </state>
@@ -881,6 +968,10 @@
             <element signature="e#205#206#0" expanded="true" />
             <element signature="e#264#265#0" expanded="true" />
           </folding>
+=======
+        <state relative-caret-position="135">
+          <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -904,7 +995,11 @@
     <entry file="file://$PROJECT_DIR$/src/Byeke/Park/ParkInfo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
+<<<<<<< HEAD
           <caret line="7" column="66" selection-start-line="7" selection-start-column="66" selection-end-line="7" selection-end-column="66" />
+=======
+          <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -1004,6 +1099,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="531">
           <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="67" column="26" lean-forward="true" selection-start-line="67" selection-start-column="26" selection-end-line="67" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
