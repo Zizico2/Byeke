@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b82b18c4-c0d8-4533-ae41-a201749d2047" name="Default Changelist" comment="User Class commented">
-      <change afterPath="$PROJECT_DIR$/src/Byeke/Tags/Nameable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Comparators/ComparatorByName.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="b82b18c4-c0d8-4533-ae41-a201749d2047" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Byeke/ByekeClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Byeke/ByekeClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Byeke/Park/ParkClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Byeke/Park/ParkClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Byeke/Park/ParkInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Byeke/Park/ParkInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Byeke/User/UserClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Byeke/User/UserClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Byeke/Tags/Nameable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Byeke/Tags/Nameable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Byeke/User/UserInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Byeke/User/UserInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -99,35 +92,35 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="18" />
+          <entry key="java" value="20" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="18" />
+          <entry key="JAVA" value="20" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="1030" />
-          <entry key="txt" value="20" />
+          <entry key="java" value="1352" />
+          <entry key="txt" value="59" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1030" />
-          <entry key="PLAIN_TEXT" value="20" />
+          <entry key="JAVA" value="1352" />
+          <entry key="PLAIN_TEXT" value="59" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="127" column="15" selection-start-line="127" selection-start-column="15" selection-end-line="127" selection-end-column="15" />
+            <state relative-caret-position="2145">
+              <caret line="144" column="77" lean-forward="true" selection-start-line="144" selection-start-column="77" selection-end-line="144" selection-end-column="77" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -173,6 +166,24 @@
                 <element signature="e#2966#2967#0" expanded="true" />
                 <element signature="e#3005#3006#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Byeke/Tags/Nameable.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Byeke/User/UserInfo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="531">
+              <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
             </state>
           </provider>
         </entry>
@@ -319,14 +330,14 @@
         <option value="$PROJECT_DIR$/src/Enums/Command.java" />
         <option value="$PROJECT_DIR$/src/Enums/Message.java" />
         <option value="$PROJECT_DIR$/src/dataStructures/OrderedDoubleList.java" />
-        <option value="$PROJECT_DIR$/src/Byeke/Tags/Nameable.java" />
         <option value="$PROJECT_DIR$/src/Byeke/Park/Comparators/ComparatorByName.java" />
-        <option value="$PROJECT_DIR$/src/Byeke/User/UserInfo.java" />
         <option value="$PROJECT_DIR$/src/Byeke/Park/ParkInfo.java" />
         <option value="$PROJECT_DIR$/src/Byeke/ByekeClass.java" />
         <option value="$PROJECT_DIR$/src/Byeke/Park/ParkClass.java" />
         <option value="$PROJECT_DIR$/src/Byeke/User/UserClass.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/Byeke/Tags/Nameable.java" />
+        <option value="$PROJECT_DIR$/src/Byeke/User/UserInfo.java" />
       </list>
     </option>
   </component>
@@ -380,7 +391,35 @@
               <item name="Byeke" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Byeke" type="462c0819:PsiDirectoryNode" />
+              <item name="Bike" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Byeke" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Byeke" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Byeke" type="462c0819:PsiDirectoryNode" />
+              <item name="Park" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Byeke" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Byeke" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Byeke" type="462c0819:PsiDirectoryNode" />
               <item name="PickUp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Byeke" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Byeke" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Byeke" type="462c0819:PsiDirectoryNode" />
+              <item name="Tags" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Byeke" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Byeke" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Byeke" type="462c0819:PsiDirectoryNode" />
+              <item name="User" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -395,7 +434,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542477184837" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542477954807" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
@@ -464,7 +503,7 @@
       <workItem from="1541765175606" duration="13708000" />
       <workItem from="1541820838857" duration="27000" />
       <workItem from="1542425733261" duration="64000" />
-      <workItem from="1542469050901" duration="6546000" />
+      <workItem from="1542469050901" duration="7315000" />
     </task>
     <task id="LOCAL-00001" summary="mil cenas">
       <created>1539351687108</created>
@@ -473,11 +512,25 @@
       <option name="project" value="LOCAL" />
       <updated>1539351687109</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="User Class commented">
+      <created>1542477215487</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1542477215487</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added Comparator.ComparatorByName">
+      <created>1542477266259</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1542477266259</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="114202000" />
+    <option name="totallyTimeSpent" value="114971000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -492,7 +545,7 @@
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16759777" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16759777" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -510,7 +563,7 @@
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5002767" side_tool="true" weight="0.32864866" />
       <window_info anchor="bottom" id="Version Control" order="10" />
-      <window_info active="true" anchor="bottom" id="Messages" order="11" visible="true" weight="0.32789558" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.32789558" />
       <window_info anchor="bottom" id="Inspection Results" order="12" weight="0.32972974" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -564,7 +617,8 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="mil cenas" />
     <MESSAGE value="User Class commented" />
-    <option name="LAST_COMMIT_MESSAGE" value="User Class commented" />
+    <MESSAGE value="Added Comparator.ComparatorByName" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Comparator.ComparatorByName" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -819,13 +873,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Byeke/User/UserInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="8" column="19" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Comparators/ComparatorByName.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -834,13 +881,6 @@
             <element signature="e#205#206#0" expanded="true" />
             <element signature="e#264#265#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Byeke/Tags/Nameable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -903,6 +943,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2145">
+          <caret line="144" column="77" lean-forward="true" selection-start-line="144" selection-start-column="77" selection-end-line="144" selection-end-column="77" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Byeke/User/UserClass.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
@@ -943,13 +993,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/Byeke/Tags/Nameable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="127" column="15" selection-start-line="127" selection-start-column="15" selection-end-line="127" selection-end-column="15" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="105">
+          <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Byeke/User/UserInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="531">
+          <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
         </state>
       </provider>
     </entry>
