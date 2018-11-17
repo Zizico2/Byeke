@@ -98,7 +98,7 @@ public class ByekeClass implements Byeke {
     }
 
     @Override
-    public ParkInfo getParkInfo(String parkId) throws InexistantParkIdException {
+    public ParkInfo getParkInfo(String parkId) throws InexistantParkIdException {   
         if (park == null || !park.getId().equalsIgnoreCase(parkId))
             throw new InexistantParkIdException();
         return park;

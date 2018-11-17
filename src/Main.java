@@ -11,7 +11,9 @@ import dataStructures.Iterator;
 import java.io.*;
 import java.util.Scanner;
 
-
+/**
+ * @author Bernardo Antonio Borda d'Agua - 53648
+ */
 public class Main {
     private static final String FILE = "save_file.data";
 
