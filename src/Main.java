@@ -11,7 +11,9 @@ import dataStructures.Iterator;
 import java.io.*;
 import java.util.Scanner;
 
-
+/**
+ * @author Bernardo Antonio Borda d'Agua - 53648
+ */
 public class Main {
     private static final String FILE = "save_file.data";
 
@@ -107,7 +109,7 @@ public class Main {
             file.close();
             return byeke;
         } catch (IOException | ClassNotFoundException e) {
-
+            //Do nothing
         }
         return new ByekeClass();
     }
@@ -123,7 +125,7 @@ public class Main {
             file.flush();
             file.close();
         } catch (IOException e) {
-
+            //Do nothing
         }
     }
 
@@ -356,7 +358,5 @@ public class Main {
         } catch (DuplicateUserIdException e) {
             System.out.println(e.getMessage());
         }
-
-
     }
 }

@@ -89,6 +89,7 @@ public class ParkClass implements Park {
         pickUps.addLast(pickup);
     }
 
+    @Override
     public void pickDown(PickUp pickup) {
         parkedBike = pickup.getBike();
     }

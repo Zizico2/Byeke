@@ -1,13 +1,12 @@
 package Byeke.User;
 
 import Byeke.PickUp.PickUpInfo;
+import Byeke.Tags.Nameable;
 import dataStructures.Iterator;
 
-public interface UserInfo extends java.io.Serializable {
+public interface UserInfo extends java.io.Serializable, Nameable {
 
     String getId();
-
-    String getName();
 
     String getAddress();
 
