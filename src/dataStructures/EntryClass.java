@@ -6,6 +6,10 @@ package dataStructures;
 
 
 public class EntryClass<K, V> implements Entry<K, V> {
+    /**
+     * Serial Version UID of the Class
+     */
+    static final long serialVersionUID = 0L;
 
     private K key;
     private V value;
@@ -23,5 +27,15 @@ public class EntryClass<K, V> implements Entry<K, V> {
     @Override
     public V getValue() {
         return value;
+    }
+
+    @Override
+    public void setKey(K newKey) {
+        key = newKey;
+    }
+
+    @Override
+    public void setValue(V newValue) {
+        value = newValue;
     }
 }

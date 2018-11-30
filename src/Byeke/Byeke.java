@@ -4,7 +4,10 @@ import Byeke.Park.ParkInfo;
 import Byeke.PickUp.PickUpInfo;
 import Byeke.User.UserInfo;
 import Exceptions.*;
+import dataStructures.DoublyLinkedList;
+import dataStructures.Entry;
 import dataStructures.Iterator;
+import dataStructures.List;
 
 /**
  * @author Bernardo Antonio Borda d'Agua - 53648
@@ -38,8 +41,8 @@ public interface Byeke extends java.io.Serializable {
 
     void parkedBike(String bikeId, String parkId) throws InexistantBikeIdException, InexistantParkIdException, BikeNotParkedException;
 
-    Iterator<UserInfo> listDelayed() throws NoDelaysException;
+    Iterator<Entry<Integer, DoublyLinkedList<UserInfo>>> listDelayed() throws NoDelaysException;
 
-    Iterator<ParkInfo> favouriteParks() throws NoPickUpsException;
+    Iterator<Entry<String, ParkInfo>> favouriteParks() throws NoPickUpsException;
 
 }

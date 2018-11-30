@@ -83,9 +83,8 @@ public class ChainedHashTable<K extends Comparable<K>, V>
     }
 
     @Override
-    public Iterator<Entry<K, V>> iterator() {
-        //TODO: Left as an exercise.
-        return null;
+    public Iterator<Entry<K,V>> iterator( ) {
+        return new OrderedDoubleListIterator<>(table);
     }
 
     @Override

@@ -112,6 +112,9 @@ public class UserClass implements User {
     @Override
     public void pickDown() {
         archivedPickUps.addLast(activePickUpInfo);
+        if (activePickUpInfo.isDelayed())
+            points++;
+        balance -= activePickUpInfo.getCost();
         activePickUpInfo = null;
     }
 

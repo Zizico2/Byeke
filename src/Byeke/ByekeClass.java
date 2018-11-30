@@ -20,6 +20,18 @@ import static Byeke.User.UserClass.createUser;
 /**
  * @author Bernardo Antonio Borda d'Agua - 53648
  */
+
+/*
+*
+*  Apenas AVLTreeNode, AVLTree, BTSKeyOrderIterator e
+*
+*
+*
+*
+*
+*
+*
+*/
 public class ByekeClass implements Byeke {
     /**
      * Serial Version UID of the Class
@@ -30,7 +42,9 @@ public class ByekeClass implements Byeke {
 
     private Dictionary<String, User> users;
 
-    private AVLTree<Integer, UserInfo> delayedUsers;
+    private OrderedDictionary<Integer, DoublyLinkedList<UserInfo>> delayedUsers;
+
+    private OrderedDictionary<String, ParkInfo> favouriteParks;
 
     private Dictionary<String, Bike> bikes;
 
@@ -43,67 +57,70 @@ public class ByekeClass implements Byeke {
         this.bikes = new ChainedHashTable<>();
         this.parks = new ChainedHashTable<>();
         this.activePickUps = new ChainedHashTable<>();
+        this.delayedUsers = new AVLTree<>();
+        this.favouriteParks = new AVLTree<>();
     }
 
     @Override
     public void addUser(String userId, String tin, String emailAddress, String phoneNumber, String name, String address) throws DuplicateUserIdException {
-        if (users.find(userId) != null)
+        if (users.find(userId.toLowerCase()) != null)
             throw new DuplicateUserIdException();
-        users.insert(userId, createUser(userId, tin, emailAddress, phoneNumber, name, address));
+        users.insert(userId.toLowerCase(), createUser(userId, tin, emailAddress, phoneNumber, name, address));
     }
 
     @Override
     public void removeUser(String userId) throws InexistantUserIdException, UserHasPickUpsException {
-        if (users.find(userId) == null)
+        if (users.find(userId.toLowerCase()) == null)
             throw new InexistantUserIdException();
-        if (users.find(userId).hasPickUps())
+        if (users.find(userId.toLowerCase()).hasPickUps())
             throw new UserHasPickUpsException();
-        users.remove(userId);
+        users.remove(userId.toLowerCase());
 
     }
 
     @Override
     public UserInfo getUserInfo(String userId) throws InexistantUserIdException {
-        if (users.find(userId) == null) {
+        if (users.find(userId.toLowerCase()) == null) {
             throw new InexistantUserIdException();
         }
-        return users.find(userId);
+        return users.find(userId.toLowerCase());
     }
 
     @Override
     public void addPark(String parkId, String name, String address) throws DuplicateParkIdException {
-        if (parks.find(parkId) != null)
+        if (parks.find(parkId.toLowerCase()) != null)
             throw new DuplicateParkIdException();
-        parks.insert(parkId, createPark(parkId, name, address));
+        parks.insert(parkId.toLowerCase(), createPark(parkId, name, address));
 
     }
 
     @Override
     public void addBike(String bikeId, String parkId, String plate) throws DuplicateBikeIdException, InexistantParkIdException {
-        Park park = parks.find(parkId);
-        if (bikes.find(bikeId) != null)
+        Park park = parks.find(parkId.toLowerCase());
+        if (bikes.find(bikeId.toLowerCase()) != null)
             throw new DuplicateBikeIdException();
         if (park == null)
             throw new InexistantParkIdException();
-        Bike bike = createBike(bikeId, plate);
-        bikes.insert(bikeId, bike);
+        Bike bike = createBike(bikeId, plate, park);
+        bikes.insert(bikeId.toLowerCase(), bike);
         park.addBike(bike);
     }
 
     @Override
     public void removeBike(String bikeId) throws InexistantBikeIdException, BikeHasPickUpsException {
-        if (bikes.find(bikeId) == null)
+        if (bikes.find(bikeId.toLowerCase()) == null)
             throw new InexistantBikeIdException();
-        if (bikes.find(bikeId).hasPickUps())
+        if (bikes.find(bikeId.toLowerCase()).hasPickUps())
             throw new BikeHasPickUpsException();
 
-        String parkId = (bikes.remove(bikeId).getCurrentPark().getId());
-        parks.find(parkId).removeBike(bikeId);
+        Bike bike = bikes.remove(bikeId.toLowerCase());
+        String parkId = bike.getCurrentPark().getId();
+        parks.find(parkId.toLowerCase()).removeBike(bikeId.toLowerCase());
     }
 
     @Override
     public ParkInfo getParkInfo(String parkId) throws InexistantParkIdException {   
-        Park park = parks.find(parkId);
+        Park park = parks.find(parkId.toLowerCase());
         if (park == null)
             throw new InexistantParkIdException();
         return park;
@@ -111,8 +128,8 @@ public class ByekeClass implements Byeke {
 
     @Override
     public void pickUp(String bikeId, String userId) throws InexistantBikeIdException, BikeOnTheMoveException, InexistantUserIdException, UserOnTheMoveException, LowBalanceException {
-        Bike bike = bikes.find(bikeId);
-        User user = users.find(userId);
+        Bike bike = bikes.find(bikeId.toLowerCase());
+        User user = users.find(userId.toLowerCase());
 
         if (bike == null)
             throw new InexistantBikeIdException();
@@ -125,11 +142,11 @@ public class ByekeClass implements Byeke {
         if (user.getBalance() < MINIMUM_BALANCE)
             throw new LowBalanceException();
 
-        Park park = parks.find(bike.getCurrentPark().getId());
+        Park park = parks.find(bike.getCurrentPark().getId().toLowerCase());
 
-        PickUp pickUp = PickUpClass.createPickUp(park, bikes.find(bikeId), users.find(userId));
+        PickUp pickUp = PickUpClass.createPickUp(park, bikes.find(bikeId.toLowerCase()), users.find(userId.toLowerCase()));
 
-        activePickUps.insert(bikeId, pickUp);
+        activePickUps.insert(bikeId.toLowerCase(), pickUp);
         bike.pickUp(pickUp);
         user.pickUp(pickUp);
         park.pickUp(pickUp);
@@ -137,8 +154,8 @@ public class ByekeClass implements Byeke {
 
     @Override
     public UserInfo pickDown(String bikeId, String parkId, int time) throws InexistantBikeIdException, BikeNotOnTheMoveException, InexistantParkIdException, InvalidTimeException {
-        Bike bike = bikes.find(bikeId);
-        Park park = parks.find(parkId);
+        Bike bike = bikes.find(bikeId.toLowerCase());
+        Park park = parks.find(parkId.toLowerCase());
 
         if (bike == null)
             throw new InexistantBikeIdException();
@@ -149,79 +166,100 @@ public class ByekeClass implements Byeke {
         if (time <= 0)
             throw new InvalidTimeException();
 
-        PickUp pickUp = activePickUps.find(bikeId);
+        PickUp pickUp = activePickUps.find(bikeId.toLowerCase());
 
-        User user = users.find(pickUp.getUserInfo().getId());
+        User user = users.find(pickUp.getUserInfo().getId().toLowerCase());
 
         pickUp.pickDown(park, time);
         park.pickDown(pickUp, bike);
         bike.pickDown();
-        user.pickDown();
-        activePickUps.remove(bikeId);
+        activePickUps.remove(bikeId.toLowerCase());
 
-        if(pickUp.isDelayed()) {
+        if (pickUp.isDelayed())
+            UpdateDelayedUsers(user);
+        else
+            user.pickDown();
 
-
-        }
+        UpdateFavouriteParks(park);
 
         return user;
     }
 
+    private void UpdateFavouriteParks(Park park) {
+        if (favouriteParks.isEmpty() || park.getNoPickUps() >= favouriteParks.iterator().next().getValue().getNoPickUps())
+            favouriteParks.insert(park.getName().toLowerCase(), park);
+    }
+
+    private void UpdateDelayedUsers(User user) {
+            int oldPoints = user.getPoints();
+            DoublyLinkedList<UserInfo> oldList = delayedUsers.find(oldPoints);
+            user.pickDown();
+            oldList.remove(user);
+            if (oldList.isEmpty())
+                delayedUsers.remove(oldPoints);
+
+            int points = user.getPoints();
+            if (delayedUsers.find(points) == null) {
+                delayedUsers.insert(points, new DoublyLinkedList<>());
+                delayedUsers.find(points).addLast(user);
+            }
+        }
+
     @Override
     public UserInfo ChargeUser(String userId, int value) throws InexistantUserIdException, InvalidValueException {
-        if (users.find(userId) == null)
+        if (users.find(userId.toLowerCase()) == null)
             throw new InexistantUserIdException();
         if (value <= 0)
             throw new InvalidValueException();
-        users.find(userId).addBalance(value);
-        return users.find(userId);
+        users.find(userId.toLowerCase()).addBalance(value);
+        return users.find(userId.toLowerCase());
     }
 
     @Override
     public Iterator<PickUpInfo> bikePickUps(String bikeId) throws InexistantBikeIdException, BikeHasNoPickUpsException, BikeOnTheMoveException {
-        if (bikes.find(bikeId) == null)
+        if (bikes.find(bikeId.toLowerCase()) == null)
             throw new InexistantBikeIdException();
-        if (!bikes.find(bikeId).hasPickUps())
+        if (!bikes.find(bikeId.toLowerCase()).hasPickUps())
             throw new BikeHasNoPickUpsException();
-        if (bikes.find(bikeId).isOnFirstPickUp())
+        if (bikes.find(bikeId.toLowerCase()).isOnFirstPickUp())
             throw new BikeOnFirstPickUpException();
-        return bikes.find(bikeId).getArchivedPickUps();
+        return bikes.find(bikeId.toLowerCase()).getArchivedPickUps();
     }
 
     @Override
     public Iterator<PickUpInfo> userPickUps(String userId) throws InexistantUserIdException, UserHasNoPickUpsException, UserOnFirstPickUpException {
-        if (users.find(userId) == null)
+        if (users.find(userId.toLowerCase()) == null)
             throw new InexistantUserIdException();
-        if (!users.find(userId).hasPickUps())
+        if (!users.find(userId.toLowerCase()).hasPickUps())
             throw new UserHasNoPickUpsException();
-        if (users.find(userId).isOnFirstPickup())
+        if (users.find(userId.toLowerCase()).isOnFirstPickup())
             throw new UserOnFirstPickUpException();
-        return users.find(userId).getArchivedPickUps();
+        return users.find(userId.toLowerCase()).getArchivedPickUps();
     }
 
     @Override
     public void parkedBike(String bikeId, String parkId) throws InexistantBikeIdException, InexistantParkIdException, BikeNotParkedException {
-        Park park = parks.find(parkId);
+        Park park = parks.find(parkId.toLowerCase());
 
-        if (bikes.find(bikeId) == null)
+        if (bikes.find(bikeId.toLowerCase()) == null)
             throw new InexistantBikeIdException();
         if (park == null)
             throw new InexistantParkIdException();
-        if (!park.hasParkedBikes())
+        if (bikes.find(bikeId.toLowerCase()).getCurrentPark() == null || !bikes.find(bikeId.toLowerCase()).getCurrentPark().getId().equalsIgnoreCase(parkId))
             throw new BikeNotParkedException();
     }
 
     @Override
-    public Iterator<UserInfo> listDelayed() throws NoDelaysException {
+    public Iterator<Entry<Integer, DoublyLinkedList<UserInfo>>> listDelayed() throws NoDelaysException {
         if (delayedUsers.isEmpty())
             throw new NoDelaysException();
         return delayedUsers.iterator();
     }
 
     @Override
-    public Iterator<ParkInfo> favouriteParks() throws NoPickUpsException {
-        if (!park.hasPickUps())
+    public Iterator<Entry<String, ParkInfo>> favouriteParks() throws NoPickUpsException {
+        if (favouriteParks.isEmpty())
             throw new NoPickUpsException();
-        return park;
+        return favouriteParks.iterator();
     }
 }

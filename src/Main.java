@@ -7,6 +7,8 @@ import Byeke.User.UserInfo;
 import Enums.Command;
 import Enums.Message;
 import Exceptions.*;
+import dataStructures.DoublyLinkedList;
+import dataStructures.Entry;
 import dataStructures.Iterator;
 
 import java.io.*;
@@ -117,7 +119,6 @@ public class Main {
 
     private static void exitProgram(Scanner in, Byeke byeke) {
         System.out.println(Message.EXITING.getMessage());
-        System.out.println();
         in.close();
 
         try {
@@ -132,8 +133,13 @@ public class Main {
 
     private static void processFavoriteParks(Byeke byeke) {
         try {
-            ParkInfo parkInfo = byeke.favouriteParks();
-            System.out.printf(Message.FAVOURITE_PARKS_SUCCESS.getMessage(), parkInfo.getName(), parkInfo.getAddress(), parkInfo.getNoPickUps());
+            Iterator<Entry<String, ParkInfo>> iterator = byeke.favouriteParks();
+            ParkInfo parkInfo;
+
+            while (iterator.hasNext()) {
+                parkInfo = iterator.next().getValue();
+                System.out.printf(Message.FAVOURITE_PARKS_SUCCESS.getMessage(), parkInfo.getName(), parkInfo.getAddress(), parkInfo.getNoPickUps());
+            }
         } catch (NoPickUpsException e) {
             System.out.println(e.getMessage());
 
@@ -142,8 +148,17 @@ public class Main {
 
     private static void processListDelayed(Byeke byeke) {
         try {
-            UserInfo userinfo = byeke.listDelayed();
-            System.out.printf(Message.LIST_DELAYED_SUCCESS.getMessage(), userinfo.getName(), userinfo.getTin(), userinfo.getAddress(), userinfo.getEmailAddress(), userinfo.getPhoneNumber(), userinfo.getBalance(), userinfo.getPoints());
+            Iterator<Entry<Integer, DoublyLinkedList<UserInfo>>> iterator = byeke.listDelayed();
+            Iterator<UserInfo> userInfoIterator;
+            UserInfo userInfo;
+            while (iterator.hasNext()) {
+                userInfoIterator = iterator.next().getValue().iterator();
+                while(userInfoIterator.hasNext()){
+                    userInfo = userInfoIterator.next();
+                    System.out.printf(Message.LIST_DELAYED_SUCCESS.getMessage(), userInfo.getName(), userInfo.getTin(), userInfo.getAddress(), userInfo.getEmailAddress(), userInfo.getPhoneNumber(), userInfo.getBalance(), userInfo.getPoints());
+                }
+
+            }
         } catch (NoDelaysException e) {
             System.out.println(e.getMessage());
 
@@ -180,7 +195,7 @@ public class Main {
                 System.out.printf(Message.USER_PICKUPS_SUCCESS.getMessage(), pickUpInfo.getBikeInfo().getId(), pickUpInfo.getInitialParkInfo().getId(), pickUpInfo.getFinalParkInfo().getId(), pickUpInfo.getTime(), pickUpInfo.getDelay(), pickUpInfo.getCost());
             }
 
-        } catch (InexistantUserIdException | UserHasNoPickUpsException | UserOnTheMoveException e) {
+        } catch (InexistantUserIdException | UserHasNoPickUpsException | UserOnTheMoveException | UserOnFirstPickUpException e) {
             System.out.println(e.getMessage());
 
         }

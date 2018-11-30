@@ -43,12 +43,12 @@ public class ParkClass implements Park {
 
     @Override
     public void addBike(Bike bike){
-        parkedBikes.insert(bike.getId(), bike);
+        parkedBikes.insert(bike.getId().toLowerCase(), bike);
     }
 
     @Override
     public void removeBike(String bikeId) {
-        parkedBikes.remove(bikeId);
+        parkedBikes.remove(bikeId.toLowerCase());
     }
 
     @Override

@@ -1,11 +1,10 @@
 package Byeke.Park;
 
-import Byeke.Tags.Nameable;
 
 /**
  * @author Bernardo Antonio Borda d'Agua - 53648
  */
-public interface ParkInfo extends java.io.Serializable, Nameable {
+public interface ParkInfo extends java.io.Serializable{
 
     String getAddress();
 
@@ -14,6 +13,8 @@ public interface ParkInfo extends java.io.Serializable, Nameable {
     String getId();
 
     int getNoPickUps();
+
+    String getName();
 
     boolean hasPickUps();
 

@@ -181,7 +181,7 @@ class BSTNode<K,V> implements Serializable
     /**
      * Sets the new right child node of the this node
      * 
-     * @param newLeft the new right child node of the current node
+     * @param newRight the new right child node of the current node
      */
     public void setRight( BSTNode<K,V> newRight )                   
     {    

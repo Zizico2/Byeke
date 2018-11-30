@@ -32,11 +32,12 @@ public class BikeClass implements Bike {
      * @param iD    unique identifier
      * @param plate license plate
      */
-    private BikeClass(String iD, String plate) {
+    private BikeClass(String iD, String plate, ParkInfo currentPark) {
         this.iD = iD;
         this.plate = plate;
         archivedPickUps = new DoublyLinkedList<>();
         currentPickUp = null;
+        this.currentPark = currentPark;
     }
 
     /**
@@ -46,8 +47,8 @@ public class BikeClass implements Bike {
      * @param plate license plate
      * @return newly created Bike
      */
-    public static BikeClass createBike(String iD, String plate) {
-        return new BikeClass(iD, plate);
+    public static BikeClass createBike(String iD, String plate, ParkInfo currentPark) {
+        return new BikeClass(iD, plate, currentPark);
     }
 
     public void pickUp(PickUpInfo pickUpInfo) {

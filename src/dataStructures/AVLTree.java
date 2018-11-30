@@ -178,8 +178,94 @@ public class AVLTree<K extends Comparable<K>, V>
      * @param path - Stack of PathStep objects containing all ancestors of the inserted node
      */
     protected void reorganizeRem( Stack<PathStep<K,V>> path )               
-    {                                                                   
-        //TODO: Left as an exercise.
+    {   boolean shrinked = true;
+        PathStep<K,V> lastStep = path.pop();
+        AVLNode<K,V> parent = (AVLNode<K,V>) lastStep.parent;
+        while ( shrinked && parent != null )
+        {
+            if ( lastStep.isLeftChild )
+                // parent's left subtree has grown.
+                switch ( parent.getBalance() )
+                {
+                    case 'L':
+                        parent.setBalance('E');
+                        break;
+                    case 'E':
+                        parent.setBalance('R');
+                        shrinked = false;
+                        break;
+                    case 'R':
+                        this.rebalanceRemRight(parent, path);
+                        shrinked = false;
+                        break;
+                }
+            else
+                // parent's right subtree has grown.
+                switch ( parent.getBalance() )
+                {
+                    case 'L':
+                        this.rebalanceRemLeft(parent, path);
+                        shrinked = false;
+                        break;
+                    case 'E':
+                        parent.setBalance('R');
+                        shrinked = false;
+                        break;
+                    case 'R':
+                        parent.setBalance('E');
+                        break;
+                }
+            lastStep = path.pop();
+            parent = (AVLNode<K,V>) lastStep.parent;
+        }
+    }
+
+    /**
+    * Every ancestor of node is stored in the stack, which is not empty.
+    * height( node.getLeft() ) - height( node.getRight() ) = 2.
+    * @param node - root of subtree to balance
+    * @param path - Stack of PathStep objects containing all ancestors of node
+    */
+    protected void rebalanceRemLeft( AVLNode<K,V> node,
+                                     Stack<PathStep<K,V>> path )
+    {
+        AVLNode<K,V> leftChild = (AVLNode<K,V>) node.getLeft();
+        switch ( leftChild.getBalance() )
+        {
+            case 'L':
+                this.rotateLeft1L(node, leftChild, path);
+                break;
+            case 'E':
+                 rotateLeft1L(node, leftChild, path);
+            case 'R':
+                this.rotateLeft2(node, leftChild, path);
+                break;
+        }
+    }
+
+
+    /**
+     * Every ancestor of node is stored in the stack, which is not empty.
+     * height( node.getRight() ) - height( node.getLeft() ) = 2.
+     * @param node - root of subtree to balance
+     * @param path - Stack of PathStep objects containing all ancestors of node
+     */
+    protected void rebalanceRemRight( AVLNode<K,V> node,
+                                      Stack<PathStep<K,V>> path )
+    {
+        AVLNode<K,V> rightChild = (AVLNode<K,V>) node.getRight();
+        switch ( rightChild.getBalance() )
+        {
+            case 'L':
+                this.rotateRight2(node, rightChild, path);
+                break;
+            case 'E':
+                rotateRight1R(node, rightChild, path);
+                break;
+            case 'R':
+                this.rotateRight1R(node, rightChild, path);
+                break;
+        }
     }
 
 
@@ -249,7 +335,7 @@ public class AVLTree<K extends Comparable<K>, V>
     protected void rotateRight1E( AVLNode<K,V> theRoot, 
         AVLNode<K,V> rightChild, Stack<PathStep<K,V>> path )
     {
-     // theRoot.setBalance('R');
+        // theRoot.setBalance('R');
         rightChild.setBalance('L');
         this.rotateRight(theRoot, rightChild, path);
     }

@@ -1,10 +1,9 @@
 package Byeke.User;
 
 import Byeke.PickUp.PickUpInfo;
-import Byeke.Tags.Nameable;
 import dataStructures.Iterator;
 
-public interface UserInfo extends java.io.Serializable, Nameable {
+public interface UserInfo extends java.io.Serializable {
     /**
      * @return iD: Unique Identifier
      */
@@ -21,6 +20,12 @@ public interface UserInfo extends java.io.Serializable, Nameable {
      * @return emailAddress: Email Address
      */
     String getEmailAddress();
+
+    /**
+     *
+     * @return name: Name
+     */
+    String getName();
 
     /**
      *

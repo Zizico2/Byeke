@@ -44,7 +44,6 @@ class AVLNode<K,V> extends BSTNode<K,V>
         balanceFactor = balance;                                      
     }
 
-
     /**
      * Constructor for AVL nodes
      * 

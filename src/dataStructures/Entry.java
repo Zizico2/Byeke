@@ -27,4 +27,7 @@ public interface Entry<K, V> extends Serializable {
      */
     V getValue();
 
+    void setKey(K newKey);
+
+    void setValue(V newValue);
 }
