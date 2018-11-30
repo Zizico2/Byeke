@@ -56,7 +56,7 @@ public class UserClass implements User {
     private int balance;
 
     /**
-     * Current points, (gained by pickDown()) affected by pickDown(), read by getPoints()
+     * Current points, (gained by pickDown()) affected by pickDown(), read by getPoints() and hasDelays()
      */
     private int points;
 
@@ -67,6 +67,19 @@ public class UserClass implements User {
     private PickUp activePickUp;
 
     //FACTORY METHODS
+    /**
+     * @param iD           Unique identifier
+     * @param tin          Taxpayer Identification Number
+     * @param emailAddress Email address
+     * @param phoneNumber  Phone number
+     * @param name         Name
+     * @param address      Address
+     * @return Base User
+     */
+    public static User createUser(String iD, String tin, String emailAddress, String phoneNumber, String name, String address) {
+        return new UserClass(iD, tin, emailAddress, phoneNumber, name, address);
+    }
+
     //CONSTRUCTOR
     private UserClass(String iD, String tin, String emailAddress, String phoneNumber, String name, String address) {
         this.iD = iD;
@@ -79,21 +92,6 @@ public class UserClass implements User {
         this.points = 0;
         this.activePickUp = null;
         this.archivedPickUps = new DoublyLinkedList<>();
-    }
-
-    /**
-     * *Constructor replacement*
-     *
-     * @param iD           Unique identifier
-     * @param tin          Taxpayer Identification Number
-     * @param emailAddress Email address
-     * @param phoneNumber  Phone number
-     * @param name         Name
-     * @param address      Address
-     * @return Default User
-     */
-    public static User createUser(String iD, String tin, String emailAddress, String phoneNumber, String name, String address) {
-        return new UserClass(iD, tin, emailAddress, phoneNumber, name, address);
     }
 
     //PUBLIC METHODS

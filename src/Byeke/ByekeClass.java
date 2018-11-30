@@ -71,10 +71,10 @@ public class ByekeClass implements Byeke {
 
     @Override
     public void addPark(String parkId, String name, String address) throws DuplicateParkIdException {
-        if (park == null || !park.getId().equalsIgnoreCase(parkId))
-            park = createPark(parkId, name, address);
-        else
+        if (park != null && park.getId().equalsIgnoreCase(parkId))
             throw new DuplicateParkIdException();
+        park = createPark(parkId, name, address);
+
     }
 
     @Override
@@ -83,8 +83,9 @@ public class ByekeClass implements Byeke {
             throw new DuplicateBikeIdException();
         if (!park.getId().equalsIgnoreCase(parkId))
             throw new InexistantParkIdException();
-        bikes.insert(bikeId, createBike(bikeId, plate));
-        park.addBike(createBike(bikeId, plate));
+        Bike bike = createBike(bikeId, plate);
+        bikes.insert(bikeId, bike);
+        park.addBike(bike);
     }
 
     @Override

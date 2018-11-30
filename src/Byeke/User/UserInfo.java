@@ -46,6 +46,10 @@ public interface UserInfo extends java.io.Serializable, Nameable {
      */
     int getPoints();
 
+    /**
+     *
+     * @return true: if user has returned a bike late (Points > 0)
+     */
     boolean hasDelays();
 
     boolean hasPickUps();
