@@ -17,9 +17,13 @@ public interface PickUpInfo extends java.io.Serializable {
 
     int getDelay();
 
+    boolean isDelayed();
+
     int getCost();
 
     UserInfo getUserInfo();
 
     BikeInfo getBikeInfo();
+
+
 }

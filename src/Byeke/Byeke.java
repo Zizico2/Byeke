@@ -38,8 +38,8 @@ public interface Byeke extends java.io.Serializable {
 
     void parkedBike(String bikeId, String parkId) throws InexistantBikeIdException, InexistantParkIdException, BikeNotParkedException;
 
-    UserInfo listDelayed() throws NoDelaysException;
+    Iterator<UserInfo> listDelayed() throws NoDelaysException;
 
-    ParkInfo favouriteParks() throws NoPickUpsException;
+    Iterator<ParkInfo> favouriteParks() throws NoPickUpsException;
 
 }

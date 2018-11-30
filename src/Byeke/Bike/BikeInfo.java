@@ -1,5 +1,6 @@
 package Byeke.Bike;
 
+import Byeke.Park.ParkInfo;
 import Byeke.PickUp.PickUpInfo;
 import dataStructures.Iterator;
 
@@ -19,4 +20,8 @@ public interface BikeInfo extends java.io.Serializable {
     boolean hasPickUps();
 
     boolean isOnFirstPickUp();
+
+    PickUpInfo getLastPickUp();
+
+    ParkInfo getCurrentPark();
 }

@@ -1,8 +1,10 @@
 package Byeke.Park;
 
 import Byeke.Bike.Bike;
-import Byeke.PickUp.PickUp;
+import Byeke.Bike.BikeInfo;
 import Byeke.PickUp.PickUpInfo;
+import dataStructures.ChainedHashTable;
+import dataStructures.Dictionary;
 import dataStructures.DoublyLinkedList;
 import dataStructures.List;
 
@@ -21,9 +23,9 @@ public class ParkClass implements Park {
 
     private String name;
 
-    private Bike parkedBike;
+    private Dictionary<String, Bike> parkedBikes;
 
-    private List<PickUpInfo> pickUps;
+    private List<PickUpInfo> archivedPickUps;
 
 
     public static ParkClass createPark(String iD, String name, String address) {
@@ -34,19 +36,19 @@ public class ParkClass implements Park {
         this.iD = iD;
         this.name = name;
         this.address = address;
-        this.parkedBike = null;
-        this.pickUps = new DoublyLinkedList<>();
+        this.parkedBikes = new ChainedHashTable<>();
+        this.archivedPickUps = new DoublyLinkedList<>();
     }
 
 
     @Override
-    public void addBike(Bike bike) {
-        parkedBike = bike;
+    public void addBike(Bike bike){
+        parkedBikes.insert(bike.getId(), bike);
     }
 
     @Override
-    public void removeBike() {
-        parkedBike = null;
+    public void removeBike(String bikeId) {
+        parkedBikes.remove(bikeId);
     }
 
     @Override
@@ -56,17 +58,17 @@ public class ParkClass implements Park {
 
     @Override
     public int getNoPickUps() {
-        return pickUps.size();
+        return archivedPickUps.size();
     }
 
     @Override
     public boolean hasPickUps() {
-        return !pickUps.isEmpty();
+        return !archivedPickUps.isEmpty();
     }
 
     @Override
     public int getNoParkedBikes() {
-        return parkedBike != null ? 1 : 0;
+        return parkedBikes.size();
     }
 
     @Override
@@ -76,7 +78,7 @@ public class ParkClass implements Park {
 
     @Override
     public boolean hasParkedBikes() {
-        return parkedBike != null;
+        return !parkedBikes.isEmpty();
     }
 
     @Override
@@ -84,15 +86,19 @@ public class ParkClass implements Park {
         return iD;
     }
 
-    public void pickUp(PickUp pickup) {
-        parkedBike = null;
-        pickUps.addLast(pickup);
+    private void registerPickUp(PickUpInfo pickUpInfo) {
+        archivedPickUps.addLast(pickUpInfo);
     }
 
     @Override
-    public void pickDown(PickUp pickup) {
-        parkedBike = pickup.getBike();
+    public void pickDown(PickUpInfo pickUpInfo, Bike bike) {
+        addBike(bike);
+        registerPickUp(pickUpInfo);
     }
 
-
+    @Override
+    public void pickUp(PickUpInfo pickUpInfo) {
+        removeBike(pickUpInfo.getBikeInfo().getId());
+        registerPickUp(pickUpInfo);
+    }
 }

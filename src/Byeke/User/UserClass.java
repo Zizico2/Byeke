@@ -64,7 +64,7 @@ public class UserClass implements User {
      * PickUps that have ended (ie. after pickDown())
      */
     private List<PickUpInfo> archivedPickUps;
-    private PickUp activePickUp;
+    private PickUpInfo activePickUpInfo;
 
     //FACTORY METHODS
     /**
@@ -90,7 +90,7 @@ public class UserClass implements User {
         this.tin = tin;
         this.balance = INITIAL_BALANCE;
         this.points = 0;
-        this.activePickUp = null;
+        this.activePickUpInfo = null;
         this.archivedPickUps = new DoublyLinkedList<>();
     }
 
@@ -106,13 +106,13 @@ public class UserClass implements User {
 
     @Override
     public void pickUp(PickUp pickUp) {
-        activePickUp = pickUp;
+        activePickUpInfo = pickUp;
     }
 
     @Override
     public void pickDown() {
-        archivedPickUps.addLast(activePickUp);
-        activePickUp = null;
+        archivedPickUps.addLast(activePickUpInfo);
+        activePickUpInfo = null;
     }
 
     @Override
@@ -157,12 +157,12 @@ public class UserClass implements User {
 
     @Override
     public boolean hasPickUps() {
-        return !archivedPickUps.isEmpty() || activePickUp != null;
+        return !archivedPickUps.isEmpty() || activePickUpInfo != null;
     }
 
     @Override
     public boolean isOnFirstPickup() {
-        return archivedPickUps.isEmpty() && activePickUp != null;
+        return archivedPickUps.isEmpty() && activePickUpInfo != null;
     }
 
     @Override
@@ -172,7 +172,7 @@ public class UserClass implements User {
 
     @Override
     public boolean isMoving() {
-        return activePickUp != null;
+        return activePickUpInfo != null;
     }
 
     @Override

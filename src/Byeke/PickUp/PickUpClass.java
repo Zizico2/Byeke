@@ -19,21 +19,21 @@ public class PickUpClass implements PickUp {
     private static final int MAX_TIME = 60;
     private static final int PAYMENT_PERIOD = 30;
 
-    private Park initialPark;
-    private Park finalPark;
-    private Bike bike;
-    private User user;
+    private ParkInfo initialPark;
+    private ParkInfo finalPark;
+    private BikeInfo bike;
+    private UserInfo user;
 
     private int cost;
     private int time;
     private int delay;
 
-    public static PickUpClass createPickUp(Park initialPark, Bike bike, User user) {
+    public static PickUpClass createPickUp(ParkInfo initialPark, Bike bike, User user) {
         return new PickUpClass(initialPark, bike, user);
     }
 
 
-    private PickUpClass(Park initialPark, Bike bike, User user) {
+    private PickUpClass(ParkInfo initialPark, Bike bike, User user) {
         this.initialPark = initialPark;
         this.bike = bike;
         this.user = user;
@@ -43,7 +43,7 @@ public class PickUpClass implements PickUp {
     }
 
     @Override
-    public void pickDown(Park finalPark, int time) {
+    public void pickDown(ParkInfo finalPark, int time) {
         this.finalPark = finalPark;
         this.time = time;
     }
@@ -69,6 +69,11 @@ public class PickUpClass implements PickUp {
     }
 
     @Override
+    public boolean isDelayed() {
+        return getDelay() > 0;
+    }
+
+    @Override
     public int getCost() {
         return cost;
     }
@@ -82,16 +87,4 @@ public class PickUpClass implements PickUp {
     public BikeInfo getBikeInfo() {
         return bike;
     }
-
-    @Override
-    public Bike getBike() {
-        return bike;
-    }
-
-    @Override
-    public User getUser() {
-        return user;
-    }
-
-
 }

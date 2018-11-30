@@ -15,7 +15,7 @@ import java.io.Serializable;
 public interface Dictionary<K, V> extends Serializable {
 
     /**
-     * Returns true iff the dictionary contains no entries.
+     * Returns true if the dictionary contains no entries.
      *
      * @return true if dictionary is empty
      */

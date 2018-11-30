@@ -1,5 +1,7 @@
 package Byeke.Bike;
 
+import Byeke.Park.Park;
+import Byeke.Park.ParkInfo;
 import Byeke.PickUp.PickUp;
 import Byeke.PickUp.PickUpInfo;
 import dataStructures.DoublyLinkedList;
@@ -21,7 +23,8 @@ public class BikeClass implements Bike {
     private String iD;
     private String plate;
     private List<PickUpInfo> archivedPickUps;
-    private PickUp activePickUp;
+    private PickUpInfo currentPickUp;
+    private ParkInfo currentPark;
 
     /**
      * Constructor
@@ -33,7 +36,7 @@ public class BikeClass implements Bike {
         this.iD = iD;
         this.plate = plate;
         archivedPickUps = new DoublyLinkedList<>();
-        activePickUp = null;
+        currentPickUp = null;
     }
 
     /**
@@ -47,13 +50,16 @@ public class BikeClass implements Bike {
         return new BikeClass(iD, plate);
     }
 
-    public void pickUp(PickUp pickUp) {
-        activePickUp = pickUp;
+    public void pickUp(PickUpInfo pickUpInfo) {
+        currentPickUp = pickUpInfo;
+        currentPark = null;
     }
 
     public void pickDown() {
-        archivedPickUps.addLast(activePickUp);
-        activePickUp = null;
+        archivedPickUps.addLast(currentPickUp);
+        currentPark = currentPickUp.getFinalParkInfo();
+        currentPickUp = null;
+
     }
 
     public String getId() {
@@ -69,16 +75,26 @@ public class BikeClass implements Bike {
     }
 
     public boolean isMoving() {
-        return activePickUp != null;
+        return currentPickUp != null;
     }
 
     @Override
     public boolean hasPickUps() {
-        return !archivedPickUps.isEmpty() || activePickUp != null;
+        return !archivedPickUps.isEmpty() || currentPickUp != null;
     }
 
     @Override
     public boolean isOnFirstPickUp() {
-        return activePickUp != null && archivedPickUps.isEmpty();
+        return currentPickUp != null && archivedPickUps.isEmpty();
+    }
+
+    public PickUpInfo getLastPickUp(){
+        if (currentPickUp == null)
+            return archivedPickUps.getLast();
+        return currentPickUp;
+    }
+
+    public ParkInfo getCurrentPark() {
+        return currentPark;
     }
 }
